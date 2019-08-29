@@ -1,0 +1,21 @@
+server:
+  port: 2302
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    register-with-eureka : true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:2201/eureka/
+spring:
+  application:
+    name: demo-a
+melon:
+  enabled: true
+  gateway: false
+  group: b
+logging:
+  level:
+    org.tieland: debug

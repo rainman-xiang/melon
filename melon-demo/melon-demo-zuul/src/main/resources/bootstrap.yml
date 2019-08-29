@@ -1,0 +1,31 @@
+server:
+  port: 2202
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    register-with-eureka : true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:2201/eureka/
+spring:
+  application:
+    name: zuul
+  redis:
+    cluster:
+      nodes:
+       - 192.168.1.201:7000
+       - 192.168.1.201:7001
+       - 192.168.1.201:7002
+       - 192.168.1.201:7003
+       - 192.168.1.201:7004
+       - 192.168.1.201:7005
+melon:
+  enabled: true
+  group: a
+  cache:
+    key: org:tieland:melon:1
+logging:
+  level:
+    org.tieland: debug
